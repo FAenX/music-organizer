@@ -176,4 +176,7 @@ def getVersion():
 
 def initGettext():
 	import gettext;
+	if platform.system().lower() == 'windows':
+		from MusicOrganizer.gettextwindows import gettext_windows;
+		gettext_windows.setup_env_windows();
 	gettext.install('music-organizer', 'locale');
