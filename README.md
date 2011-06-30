@@ -13,6 +13,13 @@ In Arch Linux just type:
 
 	# pacman -Sy python pyqt
 
+Arch Linux Screenshots
+======================
+
+Version 0.1-beta:
+
+![0.1-beta](https://github.com/Skorpion9312/music-organizer/raw/master/data/screenshots/0.1-beta-min.png)
+
 Examples
 ========
 

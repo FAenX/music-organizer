@@ -27,6 +27,13 @@ W systemie Windows wymagania są te same, postaram się w skrócie opisać proce
 
 W przyszłości postaram się te kroki uprościć lub całkowicie wyeliminować (własny instalator).
 
+Zrzuty ekranu z Arch Linux
+==========================
+
+Wersja 0.1-beta:
+
+![0.1-beta](https://github.com/Skorpion9312/music-organizer/raw/master/data/screenshots/0.1-beta-min.png)
+
 Użycie
 ======
 
