@@ -185,9 +185,9 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.__duplicates = QtGui.QGroupBox(_('Detect duplicates'));
 		self.__duplicates.setCheckable(True);
 		self.__duplicates.setChecked(False);
-		self.__duplicates.setDisabled(True);
+		#self.__duplicates.setDisabled(True);
 		self.__duplicates.setLayout(duplicatesGrid);
-		self.__duplicates.setToolTip(_('This functionality was disabled due to terrible bug in 0.1-beta...'));
+		#self.__duplicates.setToolTip(_('This functionality was disabled due to terrible bug in 0.1-beta...'));
 		self.__duplicates.setStatusTip(_('Detect duplicates and decide what to do.'));
 
 		topGroup = QtGui.QGroupBox(_('Main settings'));
@@ -235,6 +235,10 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		if self.__progress != None:
 			self.__critical(_('Another hardcore organizing action is running now!'));
 			return False;
+		if ('alfa' in utils.getVersion() or 'beta' in utils.getVersion()) and self.__duplicates.isChecked() and self.__dAction.currentText() == _('Remove'):
+			result = QtGui.QMessageBox.question(self, 'Music Organizer :: %s' % _('Question'), _('Warning! This is testing version, all actions like \"Remove\" may works unstable. It is strongly recommended to work with copies instead of oryginal files. Do you want to continue?'), 1, 2);
+			if result == 2:
+				return False;
 		self.__clean();
 		try:
 			utils.prepare(self.__path.text(), self.__target.text());
@@ -304,15 +308,17 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 
 		except KeyboardInterrupt:
 			return False;
-		utils.verbose(('Got %d files...') % len(self.__files));
+		utils.verbose(_('Number of files: %d') % len(self.__files));
 		self.__numLeft = len(self.__files);
 		self.__progress.setMaximum(self.__numLeft);
 		if self.__numLeft != 0:
 			self.__progress.setValue(0);
 			self.__progress.setLabelText(_('Organizing files...'));
 		else:
-			self.__progress.setValue(self.__progress.maximum);
+			self.__progress.setMaximum(1);
+			self.__progress.setValue(self.__progress.maximum());
 			self.__progress.setLabelText(_('No music files found!'));
+			self.__progress = None;
 			return True;
 		try:
 			# Initialize duplicates detector
@@ -321,6 +327,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 				selected = _(self.__dStrategy.currentText());
 				available = {_('MD5'): qtUtils.md5, _("SHA1"): qtUtils.sha1, _("File name"): qtUtils.basic};
 				detector = qtUtils.duplicatesDetector(available[selected]());
+				detector.reset();
 
 			for F in self.__files:
 				skip_move = False;
@@ -329,7 +336,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 				D = os.path.dirname(F);
 
 				# Get tags
-				tag = utils.getTag(F);
+				tag = utils.getTag(F, True);
 				if not tag:
 					self.__numUntagged += 1;
 					tag = utils.getDefaultTag(F);
@@ -339,7 +346,6 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 					tag = utils.normalizeTags(tag);
 
 				# Detect duplicates
-				#!!!FIXME: In some cases, mark all as duplicates :(
 				if self.__duplicates.isChecked():
 					result = detector.feed(F);
 					if result:
@@ -358,7 +364,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 						elif self.__dAction.currentText() == _('Leave'):
 							print('[I] ' + _('Skipping duplicate %s') % F);
 						self.__numDuplicates += 1;
-						self.__numOk += 1;
+						self.__numSkipped += 1;
 						skip_move = True;
 
 				if not skip_move:	
@@ -404,7 +410,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 			info.append((_('Removed'), self.__numDeleted));
 			info.append((_('Untagged'), self.__numUntagged));
 			if self.__recognizeCovers.isChecked():
-				info.append((_('Covers copied').lower() if self.__copy.isChecked() else _('Covers moved').lower(), self.__numCovers));
+				info.append((_('Covers copied') if self.__copy.isChecked() else _('Covers moved'), self.__numCovers));
 			if self.__duplicates.isChecked():
 				info.append((_('Duplicates'), self.__numDuplicates));
 			label = '';

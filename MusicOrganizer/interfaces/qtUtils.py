@@ -39,6 +39,9 @@ class duplicatesDetector:
 			self.__duplicates[key].append(file);
 		return duplicate;
 	
+	def reset(self):
+		self.__duplicates = {};
+
 	def debug(self):
 		"""
 		Just print internal dictionary
