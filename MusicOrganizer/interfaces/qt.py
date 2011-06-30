@@ -185,8 +185,10 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.__duplicates = QtGui.QGroupBox(_('Detect duplicates'));
 		self.__duplicates.setCheckable(True);
 		self.__duplicates.setChecked(False);
+		self.__duplicates.setDisabled(True);
 		self.__duplicates.setLayout(duplicatesGrid);
-		self.__duplicates.setStatusTip(_('Detect duplicates and decide what to do'));
+		self.__duplicates.setToolTip(_('This functionality was disabled due to terrible bug in 0.1-beta...'));
+		self.__duplicates.setStatusTip(_('Detect duplicates and decide what to do.'));
 
 		topGroup = QtGui.QGroupBox(_('Main settings'));
 		bottomGroup = QtGui.QGroupBox(_('Options'));
@@ -337,6 +339,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 					tag = utils.normalizeTags(tag);
 
 				# Detect duplicates
+				#!!!FIXME: In some cases, mark all as duplicates :(
 				if self.__duplicates.isChecked():
 					result = detector.feed(F);
 					if result:
@@ -403,7 +406,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 			if self.__recognizeCovers.isChecked():
 				info.append((_('Covers copied').lower() if self.__copy.isChecked() else _('Covers moved').lower(), self.__numCovers));
 			if self.__duplicates.isChecked():
-				info.append(('Duplicates', self.__numDuplicates));
+				info.append((_('Duplicates'), self.__numDuplicates));
 			label = '';
 			for pair in info:
 				label += '<p align="center">%s: <b>%d</b></p>' % (pair[0], pair[1]);

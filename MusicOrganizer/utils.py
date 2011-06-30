@@ -81,7 +81,7 @@ def getTag(track, returnNone = False):
 		print('[W] %s' % _('Track %s has no ID3 tags...' % track));
 		if returnNone:
 			return None;
-		tags = getDefaultTag();
+		tags = getDefaultTag(track);
 	return tags;
 
 def getDefaultTag(track):
