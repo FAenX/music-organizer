@@ -1,6 +1,6 @@
 from PyQt4 import QtGui, QtCore;
 from . import interface;
-from . import qtUtils;
+from .. import qtUtils;
 from .. import utils as utils;
 import os;
 import sys;
@@ -98,8 +98,8 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.__path.setText(utils.getHomeDir());
 		self.__target = QtGui.QLineEdit();
 		self.__scheme = QtGui.QLineEdit();
-		self.__scheme.setToolTip('Available blocks: {artist} {album} {date} {title} {old-file-name} {genre} {track}');
-		self.__scheme.setStatusTip('Available blocks: {artist} {album} {date} {title} {old-file-name} {genre} {track}');
+		self.__scheme.setToolTip('%s: {artist} {album} {date} {title} {old-file-name} {genre} {track}' % _('Available blocks'));
+		self.__scheme.setStatusTip('%s: {artist} {album} {date} {title} {old-file-name} {genre} {track}' % _('Available blocks'));
 		self.__setDefaultScheme();
 		self.__badCharacters = QtGui.QLineEdit();
 		self.__badCharacters.setToolTip(_('This characters is used if "Normalize tags" is checked.'));
@@ -134,7 +134,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.__normalizeTags = QtGui.QCheckBox(_('Normalize tags'));
 		self.__normalizeTags.setStatusTip(_('Remove specified bad characters from tags (~,/,@,# etc.)'));
 		self.__recognizeCovers = QtGui.QCheckBox(_('Recognize covers'));
-		self.__recognizeCovers.setStatusTip('Try to recognize covers');
+		self.__recognizeCovers.setStatusTip(_('Try to recognize covers'));
 		self.__downloadLyrics = QtGui.QCheckBox(_('Download lyrics'));
 		self.__downloadLyrics.setStatusTip('%s %s' % (_('[NOT IMPLEMENTED YET]'), _('Find and download lyrics for all tracks')));
 		self.__downloadLyrics.setDisabled(True);
@@ -201,7 +201,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.setCentralWidget(container);
 		
 	def __browseTarget(self):
-		target = self.__chooseDir(_('Select target directory'));
+		target = qtUtils.chooseDir(self, _('Select target directory'));
 		if target:
 			self.__target.setText(target);
 	
@@ -212,12 +212,9 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.__badCharacters.setText(utils.BAD_CHARS);
 
 	def __browsePath(self):
-		path = self.__chooseDir(_('Select search directory'));
+		path = qtUtils.chooseDir(self, _('Select search directory'));
 		if path:
 			self.__path.setText(path);
-
-	def __chooseDir(self, msg):
-		return QtGui.QFileDialog.getExistingDirectory(self, msg, utils.getHomeDir());
 
 	def __clean(self):
 		self.__numOk = 0;
@@ -244,7 +241,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 			if self.__target.text()[-1] != utils.DIR_SEPARATOR:
 				self.__target.insert(utils.DIR_SEPARATOR);
 		except Exception as e:
-			self.__critical(str(e));
+			qtUtils.critical(self, str(e));
 			return False;
 		utils.verbose(_('Staring hardcore organizing action!'));
 		self.__progress = QtGui.QProgressDialog('Initializing...', 'Cancel', 0, 100, self);
@@ -322,8 +319,8 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 			detector = None;
 			if self.__duplicates.isChecked():
 				selected = _(self.__dStrategy.currentText());
-				available = {_('MD5'): qtUtils.md5, _("SHA1"): qtUtils.sha1, _("File name"): qtUtils.basic};
-				detector = qtUtils.duplicatesDetector(available[selected]());
+				available = {_('MD5'): utils.md5, _("SHA1"): utils.sha1, _("File name"): utils.basic};
+				detector = utils.duplicatesDetector(available[selected]());
 				detector.reset();
 
 			for F in self.__files:
@@ -439,12 +436,9 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 				print('[W] %s' % _('Unable to remove directory %s...') % path);
 		return False;
 
-	def __critical(self, msg):
-		QtGui.QMessageBox.critical(self, 'Music Organizer :: %s' % _('Critical error'), msg, QtGui.QMessageBox.Ok);
-
 	def __organize(self):
 		if self.__progress != None:
-			self.__critical(_('Another hardcore organizing action is running now!'));
+			qtUtils.critical(self, _('Another hardcore organizing action is running now!'));
 			return False;
 		self.centralWidget().setDisabled(True);
 		self.__startOrganize();

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Music Organizer 0.1-beta\n"
 "Report-Msgid-Bugs-To: Patryk Jaworski <skorpion9312@gmail.com>\n"
-"POT-Creation-Date: 2011-06-30 22:02+0200\n"
+"POT-Creation-Date: 2011-07-02 00:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,8 +45,12 @@ msgstr ""
 msgid "&Help"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:88 MusicOrganizer/interfaces/qt.py:449
+#: MusicOrganizer/interfaces/qt.py:88 MusicOrganizer/interfaces/qt.py:448
 msgid "About"
+msgstr ""
+
+#: MusicOrganizer/interfaces/qt.py:101 MusicOrganizer/interfaces/qt.py:102
+msgid "Available blocks"
 msgstr ""
 
 #: MusicOrganizer/interfaces/qt.py:105 MusicOrganizer/interfaces/qt.py:106
@@ -135,6 +139,10 @@ msgstr ""
 msgid "Recognize covers"
 msgstr ""
 
+#: MusicOrganizer/interfaces/qt.py:137
+msgid "Try to recognize covers"
+msgstr ""
+
 #: MusicOrganizer/interfaces/qt.py:138
 msgid "Download lyrics"
 msgstr ""
@@ -167,16 +175,16 @@ msgstr ""
 msgid "Replacement: "
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:173 MusicOrganizer/interfaces/qt.py:328
+#: MusicOrganizer/interfaces/qt.py:173 MusicOrganizer/interfaces/qt.py:322
 msgid "File name"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:176 MusicOrganizer/interfaces/qt.py:238
-#: MusicOrganizer/interfaces/qt.py:358
+#: MusicOrganizer/interfaces/qt.py:176 MusicOrganizer/interfaces/qt.py:232
+#: MusicOrganizer/interfaces/qt.py:352
 msgid "Remove"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:177 MusicOrganizer/interfaces/qt.py:364
+#: MusicOrganizer/interfaces/qt.py:177 MusicOrganizer/interfaces/qt.py:358
 msgid "Leave"
 msgstr ""
 
@@ -192,10 +200,6 @@ msgstr ""
 msgid "Detect duplicates"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:190
-msgid "This functionality was disabled due to terrible bug in 0.1-beta..."
-msgstr ""
-
 #: MusicOrganizer/interfaces/qt.py:191
 msgid "Detect duplicates and decide what to do."
 msgstr ""
@@ -208,182 +212,178 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:236
-msgid "Another hardcore organizing action is running now!"
-msgstr ""
-
-#: MusicOrganizer/interfaces/qt.py:239
+#: MusicOrganizer/interfaces/qt.py:233
 msgid "Question"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:239
+#: MusicOrganizer/interfaces/qt.py:233
 msgid ""
 "Warning! This is testing version, all actions like \"Remove\" may works "
 "unstable. It is strongly recommended to work with copies instead of oryginal "
 "files. Do you want to continue?"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:252
+#: MusicOrganizer/interfaces/qt.py:246
 msgid "Staring hardcore organizing action!"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:264 MusicOrganizer/interfaces/qt.py:280
+#: MusicOrganizer/interfaces/qt.py:258 MusicOrganizer/interfaces/qt.py:274
 msgid "Canceled"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:272
+#: MusicOrganizer/interfaces/qt.py:266
 #, python-format
 msgid "Skipping empty directory %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:275
+#: MusicOrganizer/interfaces/qt.py:269
 #, python-format
 msgid "Unable to list directory %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:282
+#: MusicOrganizer/interfaces/qt.py:276
 #: MusicOrganizer/interfaces/standard.py:111
 #, python-format
 msgid "Skipping link %s..."
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:290
+#: MusicOrganizer/interfaces/qt.py:284
 #, python-format
 msgid "Adding %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:294
+#: MusicOrganizer/interfaces/qt.py:288
 #, python-format
 msgid "Preparing files (%d)"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:311
+#: MusicOrganizer/interfaces/qt.py:305
 #, python-format
 msgid "Number of files: %d"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:316
+#: MusicOrganizer/interfaces/qt.py:310
 msgid "Organizing files..."
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:320
+#: MusicOrganizer/interfaces/qt.py:314
 msgid "No music files found!"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:328
+#: MusicOrganizer/interfaces/qt.py:322
 msgid "MD5"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:328
+#: MusicOrganizer/interfaces/qt.py:322
 msgid "SHA1"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:353
+#: MusicOrganizer/interfaces/qt.py:347
 msgid "Found duplicate."
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:354
+#: MusicOrganizer/interfaces/qt.py:348
 msgid "First occurrence"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:355
+#: MusicOrganizer/interfaces/qt.py:349
 msgid "Duplicates:"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:360
+#: MusicOrganizer/interfaces/qt.py:354
 #, python-format
 msgid "Removing duplicate %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:363
+#: MusicOrganizer/interfaces/qt.py:357
 #, python-format
 msgid "Unable to remove duplicate: %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:365
+#: MusicOrganizer/interfaces/qt.py:359
 #, python-format
 msgid "Skipping duplicate %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:399
+#: MusicOrganizer/interfaces/qt.py:393
 msgid "Ok"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:406
+#: MusicOrganizer/interfaces/qt.py:400
 msgid "Total"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:407
+#: MusicOrganizer/interfaces/qt.py:401
 msgid "Left"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:408
+#: MusicOrganizer/interfaces/qt.py:402
 #: MusicOrganizer/interfaces/standard.py:94
 msgid "Copied"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:408
+#: MusicOrganizer/interfaces/qt.py:402
 #: MusicOrganizer/interfaces/standard.py:94
 msgid "Moved"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:409
+#: MusicOrganizer/interfaces/qt.py:403
 msgid "Skipped"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:410
+#: MusicOrganizer/interfaces/qt.py:404
 msgid "Removed"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:411
+#: MusicOrganizer/interfaces/qt.py:405
 msgid "Untagged"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:413
+#: MusicOrganizer/interfaces/qt.py:407
 msgid "Covers copied"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:413
+#: MusicOrganizer/interfaces/qt.py:407
 msgid "Covers moved"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:415
+#: MusicOrganizer/interfaces/qt.py:409
 msgid "Duplicates"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:423
+#: MusicOrganizer/interfaces/qt.py:417
 #: MusicOrganizer/interfaces/standard.py:130
 #, python-format
 msgid "Removing %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:428
+#: MusicOrganizer/interfaces/qt.py:422
 #: MusicOrganizer/interfaces/standard.py:133
 #, python-format
 msgid "Cannot remove %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:431
+#: MusicOrganizer/interfaces/qt.py:425
 msgid "Force remove..."
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:435
+#: MusicOrganizer/interfaces/qt.py:429
 #: MusicOrganizer/interfaces/standard.py:136
 #, python-format
 msgid "Force removing %s"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:442
+#: MusicOrganizer/interfaces/qt.py:436
 #: MusicOrganizer/interfaces/standard.py:141
 #, python-format
 msgid "Unable to remove directory %s..."
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:446
-msgid "Critical error"
+#: MusicOrganizer/interfaces/qt.py:441
+msgid "Another hardcore organizing action is running now!"
 msgstr ""
 
-#: MusicOrganizer/interfaces/qt.py:453
+#: MusicOrganizer/interfaces/qt.py:452
 msgid "Automatically organize your music collection"
 msgstr ""
 
@@ -570,87 +570,91 @@ msgid ""
 "(use default scheme)"
 msgstr ""
 
-#: MusicOrganizer/utils.py:48
+#: MusicOrganizer/qtUtils.py:12
+msgid "Critical error"
+msgstr ""
+
+#: MusicOrganizer/utils.py:49
 #, python-format
 msgid "Copying cover %s -> %s"
 msgstr ""
 
-#: MusicOrganizer/utils.py:51
+#: MusicOrganizer/utils.py:52
 #, python-format
 msgid "Moving cover %s -> %s"
 msgstr ""
 
-#: MusicOrganizer/utils.py:55
+#: MusicOrganizer/utils.py:56
 #, python-format
 msgid "Skipping %s"
 msgstr ""
 
-#: MusicOrganizer/utils.py:81
+#: MusicOrganizer/utils.py:82
 #, python-format
 msgid "Track %s has no ID3 tags..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:119
+#: MusicOrganizer/utils.py:120
 msgid "Creating output directories..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:129
+#: MusicOrganizer/utils.py:130
 #, python-format
 msgid "Copying %s -> %s"
 msgstr ""
 
-#: MusicOrganizer/utils.py:133
+#: MusicOrganizer/utils.py:134
 #, python-format
 msgid "Moving %s -> %s"
 msgstr ""
 
-#: MusicOrganizer/utils.py:137
+#: MusicOrganizer/utils.py:138
 #, python-format
 msgid "Skipping %s..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:145
+#: MusicOrganizer/utils.py:146
 msgid "Please specify search and target directories!"
 msgstr ""
 
-#: MusicOrganizer/utils.py:146
+#: MusicOrganizer/utils.py:147
 msgid "Preparing directories..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:147
+#: MusicOrganizer/utils.py:148
 msgid "Checking path..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:149
+#: MusicOrganizer/utils.py:150
 msgid "Directory given in path does not exists!"
 msgstr ""
 
-#: MusicOrganizer/utils.py:151
+#: MusicOrganizer/utils.py:152
 msgid "Directory given in path has no READ privilages!"
 msgstr ""
 
-#: MusicOrganizer/utils.py:152
+#: MusicOrganizer/utils.py:153
 msgid "Checking target dir..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:154
+#: MusicOrganizer/utils.py:155
 #, python-format
 msgid "Directory %s not found, trying to create..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:158
+#: MusicOrganizer/utils.py:159
 msgid "Unable to create directory..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:159
+#: MusicOrganizer/utils.py:160
 msgid "Checking access in target directory..."
 msgstr ""
 
-#: MusicOrganizer/utils.py:161
+#: MusicOrganizer/utils.py:162
 msgid "Target directory is not writable!"
 msgstr ""
 
-#: MusicOrganizer/utils.py:175
+#: MusicOrganizer/utils.py:176
 msgid "Unknown"
 msgstr ""
 
@@ -664,17 +668,4 @@ msgstr ""
 
 #: music-organizer.py:47
 msgid "Aborting..."
-msgstr ""
-
-#: windows-installer.py:20
-msgid "This is only Windows installer..."
-msgstr ""
-
-#: windows-installer.py:22
-msgid "Checking for PyQt4"
-msgstr ""
-
-#: windows-installer.py:26
-#, python-format
-msgid "%s not found"
 msgstr ""
