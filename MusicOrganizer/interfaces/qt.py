@@ -71,7 +71,7 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		# Toolbar
 		start = QtGui.QAction(QtGui.QIcon('./data/icons/start.png'), _('Start'), self);
 		start.setStatusTip(_('Start organize'));
-		self.connect(start, QtCore.SIGNAL('triggered()'), self.__startOrganize);
+		self.connect(start, QtCore.SIGNAL('triggered()'), self.__organize);
 		exit = QtGui.QAction(QtGui.QIcon('./data/icons/exit.png'), _('Exit'), self);
 		exit.setStatusTip(_('Exit Music Organizer'));
 		self.connect(exit, QtCore.SIGNAL('triggered()'), QtCore.SLOT('close()'));
@@ -232,9 +232,6 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 		self.__covers = {};
 	
 	def __startOrganize(self):
-		if self.__progress != None:
-			self.__critical(_('Another hardcore organizing action is running now!'));
-			return False;
 		if ('alfa' in utils.getVersion() or 'beta' in utils.getVersion()) and self.__duplicates.isChecked() and self.__dAction.currentText() == _('Remove'):
 			result = QtGui.QMessageBox.question(self, 'Music Organizer :: %s' % _('Question'), _('Warning! This is testing version, all actions like \"Remove\" may works unstable. It is strongly recommended to work with copies instead of oryginal files. Do you want to continue?'), 1, 2);
 			if result == 2:
@@ -444,6 +441,14 @@ class Organizer(QtGui.QMainWindow, interface.Interface):
 
 	def __critical(self, msg):
 		QtGui.QMessageBox.critical(self, 'Music Organizer :: %s' % _('Critical error'), msg, QtGui.QMessageBox.Ok);
+
+	def __organize(self):
+		if self.__progress != None:
+			self.__critical(_('Another hardcore organizing action is running now!'));
+			return False;
+		self.centralWidget().setDisabled(True);
+		self.__startOrganize();
+		self.centralWidget().setDisabled(False);
 
 	def __about(self):
 		QtGui.QMessageBox.about(self, 'Music Organizer :: %s' % _('About'),
